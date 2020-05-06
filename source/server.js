@@ -4,16 +4,14 @@
 const express = require("express");
 //Used for instant bidirectional communication
 const socket = require("socket.io");
-
 //Used to resolve the path of the static resources
 const path = require("path");
-const public = path.resolve("./public");
 
 //Creating a Express object
 const app = express();
 
 //Serving static resources ("/" by default)
-app.use(express.static(public));
+app.use(express.static(path.join(__dirname, "../public")));
 //Parses JSON file from client to server
 app.use(express.json());
 

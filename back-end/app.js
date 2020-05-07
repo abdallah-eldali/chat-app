@@ -9,10 +9,6 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +34,14 @@ app.use(function(err, req, res, next) {
 });
 
 //module.exports = app;
-app.listen(3001, () => {
-  console.log("Listening to port 3001");
-})
+
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
+
+io.on("connection", (clientSocket) => {
+  console.log("Connected with user");
+});
+
+server.listen(3001, () => {
+  console.log("Listening to port http://localhost:3001");
+});

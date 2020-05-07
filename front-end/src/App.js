@@ -2,6 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import io from 'socket.io-client';
+//The URL where the socket will be connect 
+//with the back-end
+const socketUrl = "http://localhost:3001"
+
 function App() {
   return (
     <div className="App">

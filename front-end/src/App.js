@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-//import ChatBox from './chat/ChatBox.js';
+import ChatBox from './chat/ChatBox/ChatBox.js';
 import LogIn from './chat/LogIn/LogIn.js';
 
 //Reacting Routing handler
@@ -39,7 +39,7 @@ class App extends Component {
   //Function called after the mounting
   //i.e.: after ReactJS adds nodes to the DOM tree
   componentDidMount(){
-    this.initSocket();
+    //this.initSocket();
   }
 
   render(){
@@ -47,7 +47,7 @@ class App extends Component {
     return(
       <Router>
         <Route path="/" exact component={LogIn} />
-        {/*<Route path="/chat" exact component={ChatBox} />*/}
+        <Route path="/chat" exact component={ChatBox} />
       </Router>
     );
   }

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ChatBox from './chat/ChatBox.js';
+import LogIn from './chat/LogIn/LogIn.js';
+
+//Reacting Routing handler
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import io from 'socket.io-client';
 //The URL where the socket will be connect 
@@ -40,9 +45,10 @@ class App extends Component {
   render(){
     //Where the components will go
     return(
-      <div>
-      
-      </div>
+      <Router>
+        <Route path="/" exact component={LogIn} />
+        <Routh path="/chat" exact component={ChatBox} />
+      </Router>
     );
   }
 };

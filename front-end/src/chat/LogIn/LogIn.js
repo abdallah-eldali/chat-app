@@ -14,30 +14,32 @@ class LogIn extends Component {
     }
 
     //Sets the username
-    setUsername(newUsername){
+    setUsername = (newUsername) => {
         this.setState({username: newUsername});
     }
 
     //Sets the room that the username wants to join in
-    setRoom(newRoom){
+    setRoom = (newRoom) => {
         this.setState({room: newRoom});
     }
 
     //Get the username submitted by the user
-    getUserName(event){
+    getUserName = (event) => {
         this.setUsername(event.target.value);
     }
 
     //Get the room name submitted by the user
-    getRoomName(event){
+    getRoomName = (event) => {
         this.setRoom(event.target.value);
     }
 
     //If the user tries to log in without a username or room specified
-    isEmpty(event){
+    isEmpty = (event) => {
         if (!this.state.username || !this.state.room){
-            //prevents the button to be clicked
             event.preventDefault();
+        }else{
+            console.log(this.state.username);
+            console.log(this.state.room);
         }
     }
 
@@ -47,11 +49,24 @@ class LogIn extends Component {
                 <div>
                     <h1 className="heading">Enter a username</h1>
                     <div>
-                        <input placeholder="Enter username..." className="userNameTextBox" type="text" onChange={this.getUserName(event)}></input>
-                        <input placeholder="Enter room name..." className="roomNameTextBox" type="text" onChange={this.getRoomName(event)}></input>
+                        <input 
+                            placeholder="Enter username..." 
+                            className="userNameTextBox" 
+                            type="text" 
+                            onChange={this.getUserName} 
+                        />
+                        <input 
+                            placeholder="Enter room name..." 
+                            className="roomNameTextBox" 
+                            type="text" 
+                            onChange={this.getRoomName} 
+                        />
                     </div>
                     {/** Link component will allow the 'submit' button to redirec the user to the /chat router */}    
-                    <Link onClick={this.isEmpty(event)} to={`/chat?room=${this.state.room}`}>
+                    <Link 
+                        onClick={this.isEmpty} 
+                        to={`/chat?room=${this.state.room}`}
+                    >
                         <button className="logInButton" type="submit">Log In</button>
                     </Link>
                 </div>

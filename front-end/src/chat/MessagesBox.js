@@ -5,7 +5,7 @@ class MessagesBox extends Components{
     super(props);
     //Array of Messages Component
     this.state = {
-      messages = []
+      messages : []
     };
   }
 

@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -30,18 +31,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send("Error");
 });
 
-//module.exports = app;
-
-const server = require("http").createServer(app);
-const io = require("socket.io")(server);
-
-io.on("connection", (clientSocket) => {
-  console.log("Connected with user");
-});
-
-server.listen(3001, () => {
-  console.log("Listening to port http://localhost:3001");
-});
+module.exports = app;

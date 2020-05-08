@@ -1,5 +1,5 @@
 {
     "scripts": {
-        "start": "npm start --prefix ./front-end & node back-end/app.js"
+        "start": "npm start --prefix ./front-end & node back-end/socket.js"
     }
 }

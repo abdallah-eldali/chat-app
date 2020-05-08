@@ -65,7 +65,7 @@ class LogIn extends Component {
                     {/** Link component will allow the 'submit' button to redirec the user to the /chat router */}    
                     <Link 
                         onClick={this.isEmpty} 
-                        to={`/chat?room=${this.state.room}`}
+                        to={`/chat?username=${this.state.username}&room=${this.state.room}`}
                     >
                         <button className="logInButton" type="submit">Log In</button>
                     </Link>

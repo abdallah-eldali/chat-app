@@ -1,7 +1,7 @@
 import React, {Component} from "react"
-//Used to parse the query string in ReactJS
-import queryString from 'query-string';
 import io from 'socket.io-client';
+
+import Messages from "../Messages/Messages"
 
 class ChatBox extends Component{
 
@@ -64,11 +64,11 @@ class ChatBox extends Component{
 
       //Listen for any upcoming message object
       this.state.socket.on("message", (message) => {
+        console.log("Message recieved from user: " + message.username + " - " + message.message);
         //since setState is async, we can't use this.state within it
-        this.setState(function (state, message){
-          //add the message to the array of messages
-          return {messages: [...state.messages, message]}
-        });
+        let newMessages = [...this.state.messages, message];
+        console.log(newMessages);
+        this.setState({messages: newMessages});
       });
     });
 
@@ -81,6 +81,7 @@ class ChatBox extends Component{
   }
 
   sendMessage = (event) => {
+    console.log("Sending the message: " + this.state.message);
     //Prevent the browser to refresh by pressing a button
     event.preventDefault();
     //if it exists
@@ -92,6 +93,8 @@ class ChatBox extends Component{
   render(){
     return (
       <div className="outerContainer">
+        <Messages messages={this.state.messages}/>
+
         <div className="innerContainer">
         <input 
           value={this.state.message} 

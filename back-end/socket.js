@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
     //has joined
     socket.broadcast.to(user.room).emit("LogInMessage", {
       user: 'abdallah',
-      text: `${user.name}, joined the room`
+      text: `${user.username}, joined the room`
     });
 
     //Join the client to a different room
@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
     //Sending every socket who's in the same chat room
     //as the user the message recieved
     io.to(user.room).emit("message", {
-      user: user.name, 
+      username: user.username, 
       message: message
     });
   });
